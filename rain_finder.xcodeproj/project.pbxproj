@@ -11,11 +11,12 @@
 		233CF774286336EC0062EF91 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233CF773286336EC0062EF91 /* ContentView.swift */; };
 		233CF776286336EE0062EF91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 233CF775286336EE0062EF91 /* Assets.xcassets */; };
 		233CF779286336EE0062EF91 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 233CF778286336EE0062EF91 /* Preview Assets.xcassets */; };
-		233CF77B286336EE0062EF91 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233CF77A286336EE0062EF91 /* Persistence.swift */; };
-		233CF77E286336EE0062EF91 /* rain_finder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 233CF77C286336EE0062EF91 /* rain_finder.xcdatamodeld */; };
+		233CF77E286336EE0062EF91 /* Airports.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 233CF77C286336EE0062EF91 /* Airports.xcdatamodeld */; };
 		233CF788286336EF0062EF91 /* rain_finderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233CF787286336EF0062EF91 /* rain_finderTests.swift */; };
 		233CF792286336EF0062EF91 /* rain_finderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233CF791286336EF0062EF91 /* rain_finderUITests.swift */; };
 		233CF794286336EF0062EF91 /* rain_finderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233CF793286336EF0062EF91 /* rain_finderUITestsLaunchTests.swift */; };
+		233CF7A1286337C50062EF91 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233CF7A0286337C50062EF91 /* CoreDataViewModel.swift */; };
+		233CF7A3286337F20062EF91 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233CF7A2286337F20062EF91 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,13 +42,14 @@
 		233CF773286336EC0062EF91 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		233CF775286336EE0062EF91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		233CF778286336EE0062EF91 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		233CF77A286336EE0062EF91 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		233CF77D286336EE0062EF91 /* rain_finder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rain_finder.xcdatamodel; sourceTree = "<group>"; };
 		233CF783286336EF0062EF91 /* rain_finderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rain_finderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		233CF787286336EF0062EF91 /* rain_finderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rain_finderTests.swift; sourceTree = "<group>"; };
 		233CF78D286336EF0062EF91 /* rain_finderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rain_finderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		233CF791286336EF0062EF91 /* rain_finderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rain_finderUITests.swift; sourceTree = "<group>"; };
 		233CF793286336EF0062EF91 /* rain_finderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rain_finderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		233CF7A0286337C50062EF91 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
+		233CF7A2286337F20062EF91 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +103,9 @@
 				233CF771286336EC0062EF91 /* rain_finderApp.swift */,
 				233CF773286336EC0062EF91 /* ContentView.swift */,
 				233CF775286336EE0062EF91 /* Assets.xcassets */,
-				233CF77A286336EE0062EF91 /* Persistence.swift */,
-				233CF77C286336EE0062EF91 /* rain_finder.xcdatamodeld */,
+				233CF7A0286337C50062EF91 /* CoreDataViewModel.swift */,
+				233CF7A2286337F20062EF91 /* LocationManager.swift */,
+				233CF77C286336EE0062EF91 /* Airports.xcdatamodeld */,
 				233CF777286336EE0062EF91 /* Preview Content */,
 			);
 			path = rain_finder;
@@ -263,8 +266,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				233CF77B286336EE0062EF91 /* Persistence.swift in Sources */,
-				233CF77E286336EE0062EF91 /* rain_finder.xcdatamodeld in Sources */,
+				233CF7A1286337C50062EF91 /* CoreDataViewModel.swift in Sources */,
+				233CF77E286336EE0062EF91 /* Airports.xcdatamodeld in Sources */,
+				233CF7A3286337F20062EF91 /* LocationManager.swift in Sources */,
 				233CF774286336EC0062EF91 /* ContentView.swift in Sources */,
 				233CF772286336EC0062EF91 /* rain_finderApp.swift in Sources */,
 			);
@@ -428,6 +432,7 @@
 				DEVELOPMENT_TEAM = 2239N37K5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "please!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -457,6 +462,7 @@
 				DEVELOPMENT_TEAM = 2239N37K5W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "please!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -593,13 +599,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		233CF77C286336EE0062EF91 /* rain_finder.xcdatamodeld */ = {
+		233CF77C286336EE0062EF91 /* Airports.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				233CF77D286336EE0062EF91 /* rain_finder.xcdatamodel */,
 			);
 			currentVersion = 233CF77D286336EE0062EF91 /* rain_finder.xcdatamodel */;
-			path = rain_finder.xcdatamodeld;
+			path = Airports.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

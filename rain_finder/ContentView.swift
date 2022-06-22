@@ -6,83 +6,87 @@
 //
 
 import SwiftUI
-import CoreData
+import CoreLocation
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    let dataUrl = "https://davidmegginson.github.io/ourairports-data/airports.csv"
+    @State var route = ""
+    @State var alternate = 0
+    
+    @StateObject var locationManager = LocationManager()
+    
+    @StateObject var vm = CoreDataViewModel()
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        
+        VStack(alignment: .center) {
+            
+            if let location = locationManager.location{
+                Text("\(convertPositionToString(location: location))")
+            }else{
+                Text("invalid position")
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+            TextField("DEP / DST", text: $route)
+                .multilineTextAlignment(.center)
+                .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.cyan, lineWidth: 1))
+                .frame(width: UIScreen.main.bounds.width/1.3)
+                .disableAutocorrection(true)
+                .font(Font.custom("Helvetica", size: 24))
+                .textInputAutocapitalization(.characters)
+            
+            if route.count > 3 {
+                Picker("make a selection", selection: $alternate) {
+                    Text("Dep").tag(0)
+                    Text("Rte").tag(1)
+                    Text("Dst").tag(2)
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+                .pickerStyle(.segmented)
+                .font(Font.custom("Helvetica", size: 24))
+                .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.cyan, lineWidth: 1))
+                .frame(width: UIScreen.main.bounds.width/1.3)
+            } else {
+                Text("Showing Nearest Airports")
             }
-            Text("Select an item")
+            List{
+                ForEach(vm.savedEntities){entity in
+                    
+                }
+                
+            }
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
+        .onAppear(){
             do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                locationManager.requestLocation()
             }
         }
+        Spacer()
     }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+    //Functions go here
+    func convertPositionToString(location: CLLocationCoordinate2D)->String{
+        let latitude = Double(location.latitude)
+        let longitude = Double(location.longitude)
+        
+        let latString = (latitude < 0) ? "S" : "N"
+        let lonString = (longitude < 0) ? "W" : "E"
+        
+        let degLat = abs(Int(floor(latitude)))
+        let minLat = abs((latitude - floor(latitude)) * 60)
+        let degLng = abs(Int(floor(longitude)))
+        let minLng = abs((longitude - floor(longitude)) * 60)
+        
+        return ("\(latString)\(String(format: "%02d", degLat))˚\(String(format: "%.2f", minLat))’  \(lonString)\(String(format: "%03d", degLng))˚\(String(format: "%.2f", minLng))’")
     }
+    func validateInput(){
+        
+    }
+    func findAirport(airport: String){
+        
+    }
+    
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }

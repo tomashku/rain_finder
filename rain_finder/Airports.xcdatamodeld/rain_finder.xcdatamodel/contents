@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21223.11" systemVersion="22A5266r" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AirportEntity" representedClassName="AirportEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="ident" optional="YES" attributeType="String"/>
+        <attribute name="latitude_deg" optional="YES" attributeType="String"/>
+        <attribute name="longitude_deg" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="AirportEntity" positionX="-63" positionY="-18" width="128" height="104"/>
+    </elements>
+</model>
